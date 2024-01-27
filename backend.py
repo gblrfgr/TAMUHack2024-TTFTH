@@ -1,4 +1,4 @@
-from flask import Flask, request, after_this_request
+from flask import Flask, request, after_this_request, jsonify
 import sqlite3
 
 app = Flask(__name__)
@@ -59,7 +59,7 @@ def get_moisture_levels():
             'created_at': moisture_level[2]
         })
 
-    return {'moisture_levels': moisture_levels_dicts}
+    return jsonify({'moisture_levels': moisture_levels_dicts})
 
 
 if __name__ == '__main__':
