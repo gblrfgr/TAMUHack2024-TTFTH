@@ -1,4 +1,4 @@
-from flask import Flask, request
+from flask import Flask, request, after_this_request
 import sqlite3
 
 app = Flask(__name__)
@@ -18,6 +18,12 @@ conn.commit()
 
 @app.route('/moisture', methods=['POST'])
 def add_moisture_level():
+
+    @after_this_request
+    def add_header(response):
+        response.headers.add('Access-Control-Allow-Origin', '*')
+        return response
+
     # Get the JSON data from the request
     data = request.get_json()
 
@@ -34,6 +40,12 @@ def add_moisture_level():
 
 @app.route('/moisture', methods=['GET'])
 def get_moisture_levels():
+
+    @after_this_request
+    def add_header(response):
+        response.headers.add('Access-Control-Allow-Origin', '*')
+        return response
+
     # Get the moisture levels from the database
     cursor.execute('SELECT * FROM moisture')
     moisture_levels = cursor.fetchall()
