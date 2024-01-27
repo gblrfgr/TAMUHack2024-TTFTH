@@ -4,8 +4,9 @@
 <head>
     <title>My Webpage</title>
     <script>
-        var data = fetch('http://127.0.0.1:3000/moisture', {
+        var data = fetch('http://plantsaver.peppersalt.info:3000/moisture', {
             method: 'GET',
+            mode: 'no-cors',
             headers: {
                 'Content-Type': 'application/json',
                 'Access-Control-Allow-Origin': '*', // allow CORS
