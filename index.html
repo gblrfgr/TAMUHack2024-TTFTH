@@ -3,10 +3,25 @@
 
 <head>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
+    <script src="recommendations.js"></script>
     <link rel="stylesheet" href="style.css">
     <title>Soil Moisture Monitoring and Recommendations</title>
     <script>
-        const loadChart = () => {
+        const prepItems = () => {
+            fetch('http://plantsaver.peppersalt.info:5000/moisture', {
+                method: 'GET',
+                mode: 'cors',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Access-Control-Allow-Origin': '*'
+                }
+            }).then(function (response) {
+                return response.json();
+            }).then(function (data) {
+                document.getElementById('recommendation').innerHTML = recommendPlantCareSoil(data.moisture_levels[data.moisture_levels.length - 1].level * 100);
+            }).catch(function (err) {
+                console.log(err);
+            });
             new Chart(
                 document.getElementById('moisture').getContext('2d'),
                 {
@@ -23,9 +38,9 @@
                 }
             );
         }
-        window.onload = loadChart;
+        window.onload = prepItems;
         const getMoistureData = () => {
-            var data = fetch('http://plantsaver.peppersalt.info:5000/moisture', {
+            fetch('http://plantsaver.peppersalt.info:5000/moisture', {
                 method: 'GET',
                 mode: 'cors',
                 headers: {
@@ -51,6 +66,9 @@
     <div class="page-title">Soil Moisture Monitoring and Recommendations</div>
     <div id="charts-container">
         <div class="chart"><canvas id="moisture"></canvas></div>
+    </div>
+    <div id="recommendations">
+        Recommendations: <span id="recommendation"></span>
     </div>
 </body>
 
