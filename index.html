@@ -1,10 +1,27 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <title>My Webpage</title>
+    <script>
+        var data = fetch('http://plantsaver.peppersalt.info:3000/moisture', {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        }).then(function (response) {
+            return response.json();
+        }).then(function (data) {
+            console.log(data);
+        }).catch(function (err) {
+            console.log(err);
+        });
+    </script>
 </head>
+
 <body>
     <h1>Welcome to My Webpage</h1>
     <p>This is a basic HTML template.</p>
 </body>
+
 </html>
