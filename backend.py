@@ -41,8 +41,7 @@ def add_moisture_level():
 
     # Insert the moisture level into the database
     conn = get_db_connection()
-    conn.execute('INSERT INTO moisture (level) VALUES (?)',
-                   (moisture_level, ))
+    conn.execute('INSERT INTO moisture (level) VALUES (?)', (moisture_level, ))
     conn.commit()
     conn.close()
 
@@ -59,8 +58,7 @@ def get_moisture_levels():
 
     # Get the moisture levels from the database
     conn = get_db_connection()
-    conn.execute('SELECT * FROM moisture')
-    moisture_levels = conn.fetchall()
+    moisture_levels = conn.execute('SELECT * FROM moisture').fetchall()
     conn.close()
 
     # Convert the moisture levels to a list of dictionaries
