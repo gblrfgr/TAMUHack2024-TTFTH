@@ -4,14 +4,14 @@
 <head>
     <title>My Webpage</title>
     <script>
-        var data = fetch('http://localhost:5000/moisture', {
+        var data = fetch('http://localhost/index.html', {
             method: 'GET',
             mode: 'cors',
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'text/html'
             }
         }).then(function (response) {
-            return response.json();
+            return response.body;
         }).then(function (data) {
             console.log(data);
         }).catch(function (err) {
