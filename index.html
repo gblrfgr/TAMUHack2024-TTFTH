@@ -18,7 +18,7 @@
             }).then(function (response) {
                 return response.json();
             }).then(function (data) {
-                document.getElementById('recommendation').innerHTML = recommendPlantCareSoil(data.moisture_levels[data.moisture_levels.length - 1].level * 100);
+                document.getElementById('moistureRecommendation').innerHTML = recommendPlantCareSoil(data.moisture_levels[data.moisture_levels.length - 1].level * 100);
             }).catch(function (err) {
                 console.log(err);
             });
@@ -68,7 +68,9 @@
         <div class="chart"><canvas id="moisture"></canvas></div>
     </div>
     <div id="recommendations">
-        Recommendations: <span id="recommendation"></span>
+        Recommendations: <li>
+            <ul id="moistureRecommendation"></ul>
+        </li>
     </div>
 </body>
 
