@@ -7,7 +7,8 @@
         var data = fetch('http://127.0.0.1:3000/moisture', {
             method: 'GET',
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                'Access-Control-Allow-Origin': '*', // allow CORS
             }
         }).then(function (response) {
             return response.json();
