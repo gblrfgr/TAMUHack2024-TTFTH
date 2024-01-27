@@ -4,10 +4,12 @@
 <head>
     <title>Soil Moisture Monitoring and Recommendations</title>
     <script>
-        var data = fetch('http://localhost:5000/moisture', {
+        var data = fetch('http://plantsaver.peppersalt.info:5000/moisture', {
             method: 'GET',
+            mode: 'cors',
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'text/html',
+                'Access-Control-Allow-Origin': '*'
             }
         }).then(function (response) {
             return response.json();
