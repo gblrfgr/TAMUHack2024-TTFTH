@@ -6,10 +6,8 @@
     <script>
         var data = fetch('http://plantsaver.peppersalt.info:3000/moisture', {
             method: 'GET',
-            mode: 'cors',
             headers: {
-                'Content-Type': 'application/json',
-                'Access-Control-Allow-Origin': '*', // allow CORS
+                'Content-Type': 'application/json'
             }
         }).then(function (response) {
             return response.json();
