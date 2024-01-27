@@ -1,0 +1,11 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@800&display=swap');
+
+.page-title {
+    font-family: 'Outfit', sans-serif;
+    font-size: 3rem;
+    color: #334;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+    line-height: 1;
+}
