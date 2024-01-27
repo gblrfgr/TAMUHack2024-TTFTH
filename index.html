@@ -4,7 +4,7 @@
 <head>
     <title>My Webpage</title>
     <script>
-        var data = fetch('http://google.com', {
+        var data = fetch('http://plantsaver.peppersalt.info:5000/moisture', {
             method: 'GET',
             mode: 'cors',
             headers: {
@@ -12,7 +12,7 @@
                 'Access-Control-Allow-Origin': '*'
             }
         }).then(function (response) {
-            return response.body;
+            return response.json();
         }).then(function (data) {
             console.log(data);
         }).catch(function (err) {
