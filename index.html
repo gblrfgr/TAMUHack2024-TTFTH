@@ -6,6 +6,7 @@
     <script>
         var data = fetch('http://localhost:5000/moisture', {
             method: 'GET',
+            mode: 'cors',
             headers: {
                 'Content-Type': 'application/json'
             }
