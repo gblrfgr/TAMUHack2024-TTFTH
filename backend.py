@@ -16,6 +16,13 @@ cursor.execute('''
     )
 ''')
 conn.commit()
+conn.close()
+
+
+def get_db_connection():
+    conn = sqlite3.connect('database.db')
+    conn.row_factory = sqlite3.Row
+    return conn
 
 
 @app.route('/moisture', methods=['POST'])
@@ -33,9 +40,11 @@ def add_moisture_level():
     moisture_level = data.get('moisture_level')
 
     # Insert the moisture level into the database
-    cursor.execute('INSERT INTO moisture (level) VALUES (?)',
+    conn = get_db_connection()
+    conn.execute('INSERT INTO moisture (level) VALUES (?)',
                    (moisture_level, ))
     conn.commit()
+    conn.close()
 
     return 'Moisture level added successfully'
 
@@ -49,8 +58,10 @@ def get_moisture_levels():
         return response
 
     # Get the moisture levels from the database
-    cursor.execute('SELECT * FROM moisture')
-    moisture_levels = cursor.fetchall()
+    conn = get_db_connection()
+    conn.execute('SELECT * FROM moisture')
+    moisture_levels = conn.fetchall()
+    conn.close()
 
     # Convert the moisture levels to a list of dictionaries
     moisture_levels_dicts = []
@@ -65,4 +76,4 @@ def get_moisture_levels():
 
 
 if __name__ == '__main__':
-     app.run(debug=True,host='0.0.0.0')
+    app.run(debug=True, host='0.0.0.0')
