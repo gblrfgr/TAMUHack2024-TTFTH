@@ -29,7 +29,7 @@
                 {
                     type: 'line',
                     data: {
-                        labels: [].map(row => new Date(row.created_at.toLocaleString())),
+                        labels: [].map(row => new Date(row.created_at.toLocaleString() + ' UTC')),
                         datasets: [
                             {
                                 label: 'Moisture Level (%)',
@@ -73,7 +73,7 @@
                 var chart = Chart.getChart('moisture');
                 chart.data.datasets[0].data = data.moisture_levels.map(row => row.level * 100);
                 data.moisture_levels.map(row => console.log(row.created_at.toLocaleString()));
-                chart.data.labels = data.moisture_levels.map(row => new Date(row.created_at.toLocaleString()));
+                chart.data.labels = data.moisture_levels.map(row => new Date(row.created_at.toLocaleString() + ' UTC'));
                 chart.update();
             }).catch(function (err) {
                 console.log(err);
