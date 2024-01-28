@@ -1,7 +1,22 @@
-@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@600;800&display=swap');
+
+body {
+    position: absolute;
+    top:0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
 
 .page-title {
     font-family: 'Outfit', sans-serif;
+    font-weight: 800;
     font-size: 3rem;
     color: #334;
     text-align: center;
@@ -11,7 +26,7 @@
 }
 
 .chart {
-    width: 50%;
+    width: 800px;
     height: 400px;
     margin: auto;
     padding: 15pt;
@@ -33,4 +48,21 @@ canvas {
     padding: 15pt;
     flex-direction: row;
     flex-wrap: wrap;
+}
+
+#recommendations {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    font-size: 1.5rem;
+    font-family: 'Outfit', sans-serif;
+    font-weight: 600;
+    color: #334;
+    text-align: center;
+    /* margin-top: 15pt; */
+}
+
+ul {
+    margin: 0;
+    padding: 0;
 }
