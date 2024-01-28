@@ -51,6 +51,7 @@
             }).then(function (response) {
                 return response.json();
             }).then(function (data) {
+                document.getElementById('moistureRecommendation').innerHTML = recommendPlantCareSoil(data.moisture_levels[data.moisture_levels.length - 1].level * 100);
                 var chart = Chart.getChart('moisture');
                 chart.data.datasets[0].data = data.moisture_levels.map(row => row.level * 100);
                 chart.data.labels = data.moisture_levels.map(row => row.created_at);
@@ -69,7 +70,7 @@
         <div class="chart"><canvas id="moisture"></canvas></div>
     </div>
     <div id="recommendations" class="fade-slide-in">
-        Recommendations: <li>
+        Recommendation: <li>
             <ul id="moistureRecommendation"></ul>
         </li>
     </div>
