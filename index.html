@@ -24,7 +24,7 @@
                             labels: data.moisture_levels.map(row => row.created_at),
                             datasets: [
                                 {
-                                    label: 'Moisture Level',
+                                    label: 'Moisture Level (%)',
                                     data: data.moisture_levels.map(row => row.level * 100)
                                 }
                             ]
@@ -35,7 +35,7 @@
                 console.log(err);
             });
         }
-        getMoistureData();
+        window.setInterval(getMoistureData, 1000);
     </script>
 </head>
 
