@@ -72,6 +72,7 @@
                 document.getElementById('moistureRecommendation').innerHTML = recommendPlantCareSoil(data.moisture_levels[data.moisture_levels.length - 1].level * 100);
                 var chart = Chart.getChart('moisture');
                 chart.data.datasets[0].data = data.moisture_levels.map(row => row.level * 100);
+                data.moisture_levels.map(row => console.log(row.created_at.toLocaleString()));
                 chart.data.labels = data.moisture_levels.map(row => new Date(row.created_at.toLocaleString()));
                 chart.update();
             }).catch(function (err) {
