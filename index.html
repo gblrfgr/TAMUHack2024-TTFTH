@@ -6,7 +6,7 @@
     <title>Soil Moisture Monitoring and Recommendations</title>
     <script>
         new Chart(
-            document.getElementById('moisture'),
+            document.getElementById('moisture').getContext('2d'),
             {
                 type: 'line',
                 data: {
