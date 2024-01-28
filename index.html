@@ -34,6 +34,7 @@
             }).then(function (response) {
                 return response.json();
             }).then(function (data) {
+                var chart = Chart.getChart('moisture');
                 chart.data.datasets[0].data = data.moisture_levels.map(row => row.level * 100);
                 chart.data.labels = data.moisture_levels.map(row => row.created_at);
                 chart.update();
