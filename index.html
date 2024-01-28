@@ -21,11 +21,11 @@
                     {
                         type: 'bar',
                         data: {
-                            labels: data.map(row => row.created_at),
+                            labels: data.moisture_levels.map(row => row.created_at),
                             datasets: [
                                 {
                                     label: 'Acquisitions by year',
-                                    data: data.map(row => row.level)
+                                    data: data.moisture_levels.map(row => row.level)
                                 }
                             ]
                         }
