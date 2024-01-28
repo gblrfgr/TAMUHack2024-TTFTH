@@ -35,6 +35,26 @@
                                 data: [].map(row => row.level * 100)
                             }
                         ]
+                    },
+                    options: {
+                        scales: {
+                            y: {
+                                beginAtZero: true,
+                                suggestedMax: 100
+                            },
+                            x: {
+                                type: 'time',
+                                time: {
+                                    unit: 'minute',
+                                    displayFormats: {
+                                        minute: 'h:mm a'
+                                    },
+                                    parser: (utcMoment) => {
+                                        return moment(utcMoment).local();
+                                    }
+                                }
+                            }
+                        }
                     }
                 }
             );
