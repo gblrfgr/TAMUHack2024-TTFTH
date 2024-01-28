@@ -15,6 +15,8 @@ cursor.execute('''
         created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
     )
 ''')
+for i in range(100):
+    conn.execute('INSERT INTO moisture (level) VALUES (?)', (i / 100, ))
 conn.commit()
 conn.close()
 
