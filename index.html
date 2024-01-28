@@ -29,7 +29,7 @@
                 {
                     type: 'line',
                     data: {
-                        labels: [].map(row => new Date(row.created_at.toLocaleString())),
+                        labels: [].map(row => new Date(row.created_at.toLocaleString() + ' UTC')),
                         datasets: [
                             {
                                 label: 'Moisture Level (%)',
