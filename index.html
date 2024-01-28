@@ -3,6 +3,7 @@
 
 <head>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns/dist/chartjs-adapter-date-fns.bundle.min.js"></script>
     <script src="recommendations.js"></script>
     <link rel="stylesheet" href="style.css">
     <title>Soil Moisture Monitoring and Recommendations</title>
@@ -48,10 +49,10 @@
                                     unit: 'minute',
                                     displayFormats: {
                                         minute: 'h:mm a'
-                                    },
-                                    parser: (utcMoment) => {
-                                        return moment(utcMoment).local();
-                                    }
+                                    } //,
+                                    // parser: (utcMoment) => {
+                                    //     return moment(utcMoment).local();
+                                    // }
                                 }
                             }
                         }
@@ -109,7 +110,6 @@
     <div id="charts-container" class="fade-slide-in">
         <div class="chart"><canvas id="moisture"></canvas></div>
     </div>
-    <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns/dist/chartjs-adapter-date-fns.bundle.min.js"></script>
     <div id="recommendations" class="fade-slide-in">
         Recommendation: <li>
             <ul id="moistureRecommendation"></ul>
