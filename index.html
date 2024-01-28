@@ -58,6 +58,8 @@
             }).catch(function (err) {
                 console.log(err);
             });
+            document.getElementById("charts-container").classList.remove("graybox");
+            document.getElementById("recommendations").classList.remove("graybox");
         }
         window.setInterval(getMoistureData, 1000);
     </script>
@@ -65,10 +67,10 @@
 
 <body>
     <div class="page-title fade-slide-in">Soil Moisture Monitoring and Recommendations</div>
-    <div id="charts-container" class="fade-slide-in">
+    <div id="charts-container" class="fade-slide-in graybox">
         <div class="chart"><canvas id="moisture"></canvas></div>
     </div>
-    <div id="recommendations" class="fade-slide-in">
+    <div id="recommendations" class="fade-slide-in graybox">
         Recommendations: <li>
             <ul id="moistureRecommendation"></ul>
         </li>
