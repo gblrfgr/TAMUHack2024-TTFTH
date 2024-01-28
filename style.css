@@ -8,6 +8,7 @@ body {
     right: 0;
     
     margin: auto;
+    display: inline;
 }
 
 .page-title {
