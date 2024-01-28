@@ -29,7 +29,7 @@ canvas {
     align-items: center;
     width: 100%;
     height: 100%;
-    margin: auto;
+    margin: 60pt auto 0 auto;
     padding: 15pt;
     flex-direction: row;
     flex-wrap: wrap;
