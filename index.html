@@ -29,7 +29,7 @@
                 {
                     type: 'line',
                     data: {
-                        labels: [].map(row => new Date(row.created_at.toLocaleString() + ' UTC')),
+                        labels: [].map(row => new Date(row.created_at.toLocaleString())),
                         datasets: [
                             {
                                 label: 'Moisture Level (%)',
@@ -72,7 +72,7 @@
                 document.getElementById('moistureRecommendation').innerHTML = recommendPlantCareSoil(data.moisture_levels[data.moisture_levels.length - 1].level * 100);
                 var chart = Chart.getChart('moisture');
                 chart.data.datasets[0].data = data.moisture_levels.map(row => row.level * 100);
-                chart.data.labels = data.moisture_levels.map(row => row.created_at);
+                chart.data.labels = data.moisture_levels.map(row => new Date(row.created_at.toLocaleString()));
                 chart.update();
             }).catch(function (err) {
                 console.log(err);
