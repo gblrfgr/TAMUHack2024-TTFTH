@@ -64,7 +64,8 @@ def get_moisture_levels():
 
     # Convert the moisture levels to a list of dictionaries
     moisture_levels_dicts = []
-    for moisture_level in moisture_levels:
+    stride = len(moisture_levels) // 100 + 1
+    for moisture_level in moisture_levels[::stride]:
         moisture_levels_dicts.append({
             'id': moisture_level[0],
             'level': moisture_level[1],
