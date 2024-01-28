@@ -61,6 +61,26 @@
             });
         }
         window.setInterval(getMoistureData, 1000);
+        const resetHistory = () => {
+            fetch('http://plantsaver.peppersalt.info:5000/moisture', {
+                method: 'DELETE',
+                mode: 'cors',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Access-Control-Allow-Origin': '*'
+                }
+            }).then(function (response) {
+                return response.body;
+            }).then(function (body) {
+                console.log(body);
+                var chart = Chart.getChart('moisture');
+                chart.data.datasets[0].data = [];
+                chart.data.labels = [];
+                chart.update();
+            }).catch(function (err) {
+                console.log(err);
+            })
+        };
     </script>
 </head>
 
@@ -74,6 +94,7 @@
             <ul id="moistureRecommendation"></ul>
         </li>
     </div>
+    <button id="reset-history" class="fade-slide-in" onclick="resetHistory()">Reset History</button>
 </body>
 
 </html>

@@ -47,6 +47,7 @@ def add_moisture_level():
 
     return 'Moisture level added successfully'
 
+
 @app.route('/moisture', methods=['GET'])
 def get_moisture_levels():
 
@@ -73,6 +74,24 @@ def get_moisture_levels():
         })
 
     return jsonify({'moisture_levels': moisture_levels_dicts})
+
+
+@app.route('/moisture', methods=['DELETE'])
+def delete_moisture_levels():
+
+    @after_this_request
+    def add_header(response):
+        response.headers.add('Access-Control-Allow-Origin', '*')
+        return response
+
+    # Delete the moisture levels from the database
+    conn = get_db_connection()
+    conn.execute('DELETE FROM moisture')
+    conn.commit()
+    conn.close()
+
+    return 'Moisture levels deleted successfully'
+
 
 if __name__ == '__main__':
     app.run(debug=True, host='0.0.0.0')
