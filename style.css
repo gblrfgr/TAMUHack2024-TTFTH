@@ -47,3 +47,8 @@ canvas {
     text-align: center;
     /* margin-top: 15pt; */
 }
+
+ul {
+    margin: 0;
+    padding: 0;
+}
