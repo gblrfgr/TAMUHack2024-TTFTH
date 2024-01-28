@@ -61,7 +61,7 @@ def get_moisture_levels():
     # Get the moisture levels from the database
     conn = get_db_connection()
     moisture_levels = conn.execute(
-        'SELECT * FROM moisture WHERE created_at >= DATEADD(day,-7, GETDATE())'
+        'SELECT * FROM moisture WHERE created_at >= date(\'now\', \'-7 day\')'
     ).fetchall()
     conn.close()
 
