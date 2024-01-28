@@ -3,27 +3,46 @@
 
 <head>
     <title>My Webpage</title>
+    <script src="https://cdnjs.com/libraries/Chart.js"></script>
     <script>
-        var data = fetch('http://plantsaver.peppersalt.info:5000/moisture', {
-            method: 'GET',
-            mode: 'cors',
-            headers: {
-                'Content-Type': 'text/html',
-                'Access-Control-Allow-Origin': '*'
-            }
-        }).then(function (response) {
-            return response.json();
-        }).then(function (data) {
-            console.log(data);
-        }).catch(function (err) {
-            console.log(err);
-        });
+        const getMoistureData = () => {
+            var data = fetch('http://plantsaver.peppersalt.info:5000/moisture', {
+                method: 'GET',
+                mode: 'cors',
+                headers: {
+                    'Content-Type': 'text/html',
+                    'Access-Control-Allow-Origin': '*'
+                }
+            }).then(function (response) {
+                return response.json();
+            }).then(function (data) {
+                new Chart(
+                    document.getElementById('moisture'),
+                    {
+                        type: 'bar',
+                        data: {
+                            labels: data.map(row => row.created_at),
+                            datasets: [
+                                {
+                                    label: 'Acquisitions by year',
+                                    data: data.map(row => row.level)
+                                }
+                            ]
+                        }
+                    }
+                );
+            }).catch(function (err) {
+                console.log(err);
+            });
+        }
+        getMoistureData();
     </script>
 </head>
 
 <body>
     <h1>Welcome to My Webpage</h1>
     <p>This is a basic HTML template.</p>
+    <div style="width: 800px;"><canvas id="moisture"></canvas></div>
 </body>
 
 </html>
