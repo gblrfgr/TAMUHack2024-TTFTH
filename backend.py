@@ -5,7 +5,7 @@ from flask_cors import CORS
 app = Flask(__name__)
 CORS(app)
 
-# Create a SQLite database and table
+# Create a SQLite database and tables
 conn = sqlite3.connect('moisture_levels.db')
 cursor = conn.cursor()
 cursor.execute('''
@@ -13,7 +13,7 @@ cursor.execute('''
         id INTEGER PRIMARY KEY AUTOINCREMENT,
         level REAL NOT NULL,
         created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-    )
+    );             
 ''')
 conn.commit()
 conn.close()
@@ -47,7 +47,6 @@ def add_moisture_level():
 
     return 'Moisture level added successfully'
 
-
 @app.route('/moisture', methods=['GET'])
 def get_moisture_levels():
 
@@ -73,7 +72,6 @@ def get_moisture_levels():
         })
 
     return jsonify({'moisture_levels': moisture_levels_dicts})
-
 
 if __name__ == '__main__':
     app.run(debug=True, host='0.0.0.0')
